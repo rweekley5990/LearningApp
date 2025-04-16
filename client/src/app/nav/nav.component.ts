@@ -12,7 +12,7 @@ export class NavComponent implements OnInit, OnDestroy
 {
   utcTime: string = '';
   estTime: string = '';
-  private intervalId!: any;
+  private intervalId!: any; //! is the Non-Null operator
 
   ngOnInit(): void {
     this.updateClock(); // Initial time update
@@ -25,10 +25,8 @@ export class NavComponent implements OnInit, OnDestroy
 
   private updateClock(): void {
     const utcDate = new Date();
-    const estDate = new Date(utcDate.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const estDate = new Date();
 
-    this.utcTime = utcDate.toUTCString();  // Ensures correct UTC display
-   
 
     this.utcTime = this.formatUTCTime(utcDate);
     this.estTime = this.formatLocalTime(estDate);
