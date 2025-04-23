@@ -15,12 +15,15 @@ export class NavComponent implements OnInit, OnDestroy
   private intervalId!: any; //! is the Non-Null operator
 
   ngOnInit(): void {
-    this.updateClock(); // Initial time update
-    this.intervalId = setInterval(() => this.updateClock(), 1000); // Update every second
+    // Initial time update
+    this.updateClock(); 
+    // Update every second
+    this.intervalId = setInterval(() => this.updateClock(), 1000); 
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.intervalId); // Stop the timer when the component is destroyed
+    // Stop the timer when the component is destroyed
+    clearInterval(this.intervalId); 
   }
 
   private updateClock(): void {
@@ -38,7 +41,8 @@ export class NavComponent implements OnInit, OnDestroy
     let seconds = date.getSeconds();
     let ampm = hours >= 12 ? 'PM' : 'AM';
 
-    hours = hours % 12 || 12; // Convert to 12-hour format
+    // Convert to 12-hour format
+    hours = hours % 12 || 12; 
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${ampm}`;
   }
 
@@ -49,7 +53,7 @@ export class NavComponent implements OnInit, OnDestroy
     let seconds = date.getUTCSeconds();
     let ampm = hours >= 12 ? 'PM' : 'AM';
 
-    hours = hours % 12 || 12; // Convert to 12-hour format
+    hours = hours % 12 || 12; 
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${ampm}`;
   }
 
