@@ -1,9 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject} from '@angular/core';
 import { Observable } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import {AccountService} from '../_services/account.service'
+import {NgIf} from '@angular/common'
 
 @Component({
   selector: 'app-nav',
-  imports: [],
+  imports: [FormsModule, NgIf],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
@@ -57,6 +60,22 @@ export class NavComponent implements OnInit, OnDestroy
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${ampm}`;
   }
 
+    private accountService = inject(AccountService);
+    loggedIn = false;
+    model: any = {};
+    login() {
+      this.accountService.login(this.model).subscribe({
+        next: response => {
+          console.log(response);
+          this.loggedIn = true;
+        },
+        error: error => console.log(error)
+      })
+    }
+
+    logout(){
+      this.loggedIn = false;
+    }
 }
 
 

@@ -1,5 +1,6 @@
 <nav class="flex h-[3rem] mx-auto text-white bg-black justify-center rounded-sm bg-opacity-75 sticky top-0">
     
+    @if (loggedIn){
     <h1 class="
     px-6
     flex
@@ -21,7 +22,7 @@
     <span class="
     p-[0.3rem]
     rounded-md
-    hover:bg-blue-400/50
+    hover:bg-blue-600/50
     ">Matches</span></a>
 
     <a href="#" class="
@@ -32,7 +33,7 @@
     <span class="
     p-[0.3rem]
     rounded-md
-    hover:bg-blue-400/50
+    hover:bg-blue-600/50
     ">Lists</span></a>
 
     <a href="#" class="
@@ -43,26 +44,27 @@
     <span class="
     p-[0.3rem]
     rounded-md
-    hover:bg-blue-400/50
+    hover:bg-blue-600/50
     ">Messages</span></a>
+    }
   
-
-    
-    <div class="
+@if (!loggedIn) {
+ <div class="
     h-auto 
     flex 
     items-center">
+    <form #loginForm="ngForm" (ngSubmit)="login()">
         <button class="
         p-[0.2rem]
         mx-2
         rounded-md
         ring-2
         ring-blue-400
-        hover:bg-blue-400/50
+        hover:bg-blue-600/50
         ">
             Log in
         </button>
-        <input class="
+        <input name="username" [(ngModel)]="model.username" class="
         px-6
         h-[2rem]
         items-center 
@@ -85,7 +87,7 @@
         focus:rounded" 
         placeholder="UserName">
 
-        <input class="
+        <input name="password" [(ngModel)]="model.password" class="
         px-6
         h-[2rem]
         items-center 
@@ -108,7 +110,34 @@
         focus:rounded
         ml-1.5" 
         placeholder="Password" type="password">
+    </form>
+</div>
+}
+
+@if (loggedIn){
+<div class="flex items-center">
+<div class="relative group px-4">
+    <a class="text-md active:font-bold hover:text-blue-400 text-lg
+        text-center w-full no-underline sm:w-auto sm:pr-4 py-2 sm:py-1" >
+    Dropdown
+    </a>
+  <div class="absolute z-10 hidden bg-grey-200 group-hover:block">
+    <div class="px-2 pt-2 pb-4 bg-black shadow-lg rounded-md">
+         <div class="dropdown-menu">
+           <ul>
+           <li><button class="dropdown-item p-[0.2rem]
+            mx-2
+            rounded-md
+            ring-2
+            ring-blue-400
+            hover:bg-blue-600/50" (click)="logout()">Log Out</button></li>
+         </ul>
+        </div>
+       </div>
+      </div>
     </div>
+   </div>
+}
 
     <div class="px-6 text-base font-Medium place-content-center">
         <p class="">
