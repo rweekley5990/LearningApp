@@ -1,0 +1,67 @@
+<div class="flex h-[4rem] mx-auto justify-center rounded-sm bg-opacity-50 mt-4">
+<div class="grid grid-cols-1 justify-center">
+
+@if (!registerMode)
+{
+
+    <div>
+        <h1 class="text-blue-400 text-4xl mx-auto justify-center flex">Find your match</h1>
+    </div>
+    <div>
+        <p class="text-white text-lg mx-auto justify-center flex">Sign Up to Become the Master of Online Dating!</p>
+    </div>
+    <div class="grid grid-cols-2 justify-center">
+        <button class="p-[0.2rem]
+        mx-2
+        rounded-md
+        ring-2
+        ring-blue-400
+        text-white
+        text-lg
+        hover:bg-blue-600/50
+        mx-auto
+        mr-4
+        mt-4
+        bg-black bg-opacity-25"
+        (click)="registerToggle()">Register</button>
+
+
+        <button class="p-[0.2rem]
+        mx-2
+        rounded-md
+        ring-2
+        text-white
+        text-lg
+        ring-blue-400
+        hover:bg-blue-600/50
+        mx-auto
+        ml-2
+        mt-4
+        bg-black bg-opacity-25">Learn More</button>
+     </div>
+    
+}
+
+@if (registerMode){
+ <!-- <div class="flex items-center">
+    <p class="text-white text-lg mx-auto justify-center flex">PlaceHolder</p>
+ </div>
+    <button class="p-[0.2rem]
+    mx-2
+    rounded-md
+    ring-2
+    ring-blue-400
+    text-white
+    text-lg
+    hover:bg-blue-600/50
+    mx-auto
+    mr-4
+    mt-4
+    bg-black bg-opacity-25"
+    (click)="registerToggle()">Register</button> -->
+    <app-register [usersFromHome]="users"
+        (cancelRegister)="cancelRegisterMode($event)"
+    ></app-register>
+}
+</div>
+</div>

@@ -1,0 +1,121 @@
+<div class="flex mx-auto justify-center rounded-md bg-opacity-50 mt-4 bg-black p-4">
+    <div class="grid grid-cols-1 justify-center">
+        <form #registerForm="ngForm" (ngSubmit)="register()">
+
+            <div>
+                <h1 class="text-blue-400 text-2xl mx-auto justify-center flex">Sign Up</h1>
+            </div>
+            <div class="mt-2">
+                <label class="text-white text-lg">UserName</label>
+            </div>
+            <div>
+                <input name="username" [(ngModel)]="model.username" class="
+                px-6
+                h-[2rem]
+                items-center 
+                rounded
+                border
+                border-gray-400 
+                bg-gray-200 
+                focus:bg-white 
+                text-gray-900 
+                hover:bg-white
+                hover:rounded-sm
+                hover:border-white 
+                hover:ring-2 
+                hover:ring-blue-400
+                hover:rounded
+                focus:outline-none 
+                focus:border-white
+                focus:ring-2
+                focus:ring-blue-400
+                focus:rounded
+                mt-1" 
+                placeholder="UserName">
+            </div>
+            <div class="mt-2">
+                <label class="text-white text-lg">Password</label>
+            </div>
+            <div>
+                <input type="password" name="password" [(ngModel)]="model.password" class="
+                px-6
+                h-[2rem]
+                items-center 
+                rounded
+                border
+                border-gray-400 
+                bg-gray-200 
+                focus:bg-white 
+                text-gray-900 
+                hover:bg-white
+                hover:rounded-sm
+                hover:border-white 
+                hover:ring-2 
+                hover:ring-blue-400
+                hover:rounded
+                focus:outline-none 
+                focus:border-white
+                focus:ring-2
+                focus:ring-blue-400
+                focus:rounded
+                mt-1" 
+                placeholder="Password">
+            </div>
+            <div class="grid grid-cols-2 gap-1 justify-center">
+                    <button class="
+                    p-[0.2rem]
+                    mx-2
+                    rounded-md
+                    ring-2
+                    ring-blue-400
+                    hover:bg-blue-600/50
+                    text-white
+                    flex
+                    justify-center
+                    mx-auto
+                    px-4
+                    mt-4" type="submit">
+                        Register
+                </button>
+
+                <button class="
+                p-[0.2rem]
+                mx-2
+                rounded-md
+                ring-2
+                ring-red-400
+                hover:bg-red-600/50
+                text-white
+                flex
+                justify-center
+                mx-auto
+                px-4
+                mt-4" type="button" (click)="cancel()">
+                    Cancel
+            </button>
+
+            </div>
+
+            <!-- <div class="mt-4">
+                <label class="text-blue-400  text-1xl flex justify-center">Who is Your Favorite User?</label>
+            </div>
+            <div>
+                <select class="flex mx-auto text-white bg-black bg-opacity-75 w-64 text-lg
+                hover:ring-2 
+                hover:ring-blue-400
+                hover:rounded
+                focus:ring-2
+                focus:ring-blue-400">
+                    @for (user of usersFromHome(); track $index){
+                        
+                        <option [value]="user.userName">
+                            {{user.userName}}
+                        </option>
+                       
+                    }
+                </select>
+            </div> -->
+
+        </form>
+    </div>
+</div>

@@ -6,7 +6,7 @@ import {NgIf} from '@angular/common'
 
 @Component({
   selector: 'app-nav',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
@@ -60,21 +60,25 @@ export class NavComponent implements OnInit, OnDestroy
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${ampm}`;
   }
 
-    private accountService = inject(AccountService);
-    loggedIn = false;
+    accountService = inject(AccountService);
     model: any = {};
     login() {
       this.accountService.login(this.model).subscribe({
         next: response => {
           console.log(response);
-          this.loggedIn = true;
+          
         },
         error: error => console.log(error)
       })
+
+      this.model.username = "";
+      this.model.password = "";
     }
 
     logout(){
-      this.loggedIn = false;
+      this.accountService.logout();
+      this.model.username = "";
+      this.model.password = "";
     }
 }
 
