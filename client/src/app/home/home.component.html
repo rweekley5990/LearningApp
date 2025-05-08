@@ -1,7 +1,16 @@
 <div class="flex h-[4rem] mx-auto justify-center rounded-sm bg-opacity-50 mt-4">
 <div class="grid grid-cols-1 justify-center">
 
-@if (!registerMode)
+@if (!registerMode && accountService.currentUser()){
+    <div>
+        <h1 class="text-blue-400 text-4xl mx-auto justify-center flex">Welcome {{username}}!</h1>
+    </div>
+    <div>
+        <p class="text-white text-lg mx-auto justify-center flex">You are now the Master of Online Dating!</p>
+    </div>
+}
+
+@if (!registerMode && !accountService.currentUser())
 {
 
     <div>

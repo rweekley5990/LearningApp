@@ -1,6 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { RegisterComponent } from "../register/register.component";
 import { HttpClient } from '@angular/common/http';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,11 @@ export class HomeComponent implements OnInit{
   registerMode = false;
   users: any;
   http = inject(HttpClient);
+  accountService = inject(AccountService);
+ loggedInUser = localStorage.getItem('user');
+ parsedData = this.loggedInUser ? JSON.parse(this.loggedInUser) : "{userName: Null}";
+ username = this.parsedData.userName;
+
 
   ngOnInit(): void{
     this.getUsers();

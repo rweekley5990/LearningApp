@@ -1,12 +1,14 @@
-import { Component, OnInit, OnDestroy, inject} from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, output} from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import {AccountService} from '../_services/account.service'
 import {NgIf} from '@angular/common'
+import { Router, RouterLink, RouterLinkActive} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink, RouterLinkActive],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
@@ -16,6 +18,9 @@ export class NavComponent implements OnInit, OnDestroy
   utcTime: string = '';
   estTime: string = '';
   private intervalId!: any; //! is the Non-Null operator
+  private router = inject(Router);
+
+  private toastr = inject(ToastrService);
 
   ngOnInit(): void {
     // Initial time update
@@ -64,11 +69,11 @@ export class NavComponent implements OnInit, OnDestroy
     model: any = {};
     login() {
       this.accountService.login(this.model).subscribe({
-        next: response => {
-          console.log(response);
+        next: _ => { //don't need the response, so I changed it to _ it could also just be ()
+         void this.router.navigateByUrl('/members'); // Redirect to members page on successful login, can set to void as you don't need the promise
           
         },
-        error: error => console.log(error)
+        error: error => this.toastr.error(error.error) // Show error message if login fails
       })
 
       this.model.username = "";
@@ -79,6 +84,8 @@ export class NavComponent implements OnInit, OnDestroy
       this.accountService.logout();
       this.model.username = "";
       this.model.password = "";
+      this.router.navigateByUrl('/');
+      window.location.reload();
     }
 }
 
