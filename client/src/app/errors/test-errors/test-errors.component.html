@@ -1,0 +1,80 @@
+
+<div class="flex items-center justify-center p-5 text-white">
+    <button class="
+    p-[0.2rem]
+    mx-2
+    rounded-md
+    ring-2
+    ring-blue-400
+    hover:bg-blue-600/50
+    " (click)="get400Error()">
+        Test 400 Error
+    </button>
+</div>
+
+
+<div class="flex items-center justify-center p-5 text-white">
+    <button class="
+    p-[0.2rem]
+    mx-2
+    rounded-md
+    ring-2
+    ring-blue-400
+    hover:bg-blue-600/50
+    " (click)="get401Error()">
+        Test 401 Error
+    </button>
+</div>
+
+<div class="flex items-center justify-center p-5 text-white">
+    <button class="
+    p-[0.2rem]
+    mx-2
+    rounded-md
+    ring-2
+    ring-blue-400
+    hover:bg-blue-600/50
+    " (click)="get404Error()">
+        Test 404 Error
+    </button>
+</div>
+
+<div class="flex items-center justify-center p-5 text-white">
+    <button class="
+    p-[0.2rem]
+    mx-2
+    rounded-md
+    ring-2
+    ring-blue-400
+    hover:bg-blue-600/50
+    " (click)="get500Error()">
+        Test 500 Error
+    </button>
+</div>
+
+<div class="flex items-center justify-center p-5 text-white">
+    <button class="
+    p-[0.2rem]
+    mx-2
+    rounded-md
+    ring-2
+    ring-blue-400
+    hover:bg-blue-600/50
+    " (click)="get400ValidationError()">
+        Test 400 Validation Error
+    </button>
+</div>
+
+@if(validationErrors.length > 0)
+{
+    <div class="flex items-center justify-center p-5 text-red-600">
+        <ul class="bg-black bg-opacity-75 rounded p-4">
+            @for (error of validationErrors; track $index)
+            {
+                <li class="m-2">
+                    {{error}}
+                </li>
+            }
+        </ul>
+    </div>
+}

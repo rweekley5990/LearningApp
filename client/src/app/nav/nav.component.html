@@ -13,6 +13,18 @@
     text-2xl
     tracking-wide
     ">LearningSite</span></a>
+
+    <a routerLink="/errors" class="
+    px-4
+    flex
+    items-center
+    ">
+    <span routerLinkActive="text-blue-400" class="
+    p-[0.3rem]
+    rounded-md
+    hover:bg-blue-600/50
+    ">Errors</span></a>
+
 @if (accountService.currentUser()){
     <a routerLink="/members" class="
     px-4
