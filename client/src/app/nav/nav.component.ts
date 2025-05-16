@@ -84,8 +84,6 @@ export class NavComponent implements OnInit, OnDestroy
       this.accountService.logout();
       this.model.username = "";
       this.model.password = "";
-      this.router.navigateByUrl('/');
-      window.location.reload();
     }
 }
 

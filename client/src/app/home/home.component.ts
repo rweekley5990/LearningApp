@@ -14,13 +14,13 @@ export class HomeComponent implements OnInit{
   users: any;
   http = inject(HttpClient);
   accountService = inject(AccountService);
- loggedInUser = localStorage.getItem('user');
- parsedData = this.loggedInUser ? JSON.parse(this.loggedInUser) : "{userName: Null}";
- username = this.parsedData.userName;
+//  loggedInUser = localStorage.getItem('user');
+//  parsedData = this.loggedInUser ? JSON.parse(this.loggedInUser) : "{userName: Null}";
+//  username = this.parsedData.userName;
 
 
   ngOnInit(): void{
-    this.getUsers();
+    // this.getUsers();
   }
 
   registerToggle(){

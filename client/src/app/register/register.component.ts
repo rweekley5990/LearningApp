@@ -31,8 +31,6 @@ export class RegisterComponent {
     
     this.model.username = "";
     this.model.password = "";
-    this.router.navigateByUrl('/');
-    window.location.reload();
    
   }
 
