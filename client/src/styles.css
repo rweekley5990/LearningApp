@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
 body{
     background-image: url('../public/BackGround.png');
     background-position: center;
@@ -11,4 +12,21 @@ body{
     height: 100vh;
     width: 100vw;
     
+}
+*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Ensure the background covers at least the viewport height */
+    width: 100%; /* Ensure the width spans the full viewport */
+}
+
+body {
+    background-image: url('../public/BackGround.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex; /* Optional: Helps with centering content */
+    flex-direction: column; /* Optional: Ensures content stacks vertically */
 }
